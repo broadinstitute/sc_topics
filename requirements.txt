@@ -1,2 +1,8 @@
 nose
 sphinx
+sklearn
+anndata
+scanpy
+gensim
+numpy
+pandas
