@@ -10,7 +10,7 @@ ADD . /jupyter-scanpy
 USER root
 
 ## Install Python Requirements
-RUN pip3 install -r /jupyter-scanpy/requirements.txt
+RUN pip install -r /jupyter-scanpy/requirements.txt
 
 ## Notebook user
 USER $NB_USER
