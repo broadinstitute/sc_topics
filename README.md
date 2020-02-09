@@ -1,8 +1,10 @@
 # sc_topics
 
+## Introduction
+
 Interface for different topic models for single cell RNA-seq data.
 
-# References
+## References
 
   - https://radimrehurek.com/gensim/apiref.html
   - https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/

@@ -5,21 +5,20 @@
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='sample',
+    name='sc_topics',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description='Interface to topic modeling for single cell RNA-seq',
     long_description=readme,
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/samplemod',
+    author='Kirk Gosik',
+    author_email='kgosik@broadinstitute.org',
+    url='https://github.com/broadinstitute/sc_topics',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
-

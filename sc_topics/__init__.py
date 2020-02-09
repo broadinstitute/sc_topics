@@ -1,1 +1,1 @@
-from .core import hmm
+from .sc_topics import *
