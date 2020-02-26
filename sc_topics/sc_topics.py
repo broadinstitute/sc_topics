@@ -32,7 +32,7 @@ def topics(
     per_word_topics: bool,
     copy: bool    
 ) -> Optional[AnnData]:
-    """\
+    """
     Topic modeling description and interface description will go here!
 
 
@@ -129,21 +129,24 @@ dtype ({numpy.float16, numpy.float32, numpy.float64}, optional) – Data-type to
     # corpus = gensim.matutils.Dense2Corpus(mat)
     ## corpora.MmCorpus.serialize(project_directory + '/corpus/' + output + '_corpus.mm', corpus)
 
-
+    ## Non-negative Matrix Factorization Topic Models #################################
     if model == 'nmf':
-        nmf = NMF(n_components=num_topics, init='random', random_state=random_state, alpha=decay)
-        W = nmf.fit_transform(mat)
+        nmf = NMF(n_components=num_topics, init='random', random_state=random_state)
+        W = nmf.fit_transform(mat.T)
         H = nmf.components_
 
         ## topic by cell/documents
-        cell_topics = pd.DataFrame(X)
+        cell_topics = pd.DataFrame(W)
         cell_topics['index'] = adata.obs.index.tolist()
         cell_topics.set_index('index', inplace=True)
 
         ## every topic by every gene
-        topic_scores = pd.DataFrame(H)
+        topic_scores = pd.DataFrame(H).T
+        topic_scores['index'] = adata.var_names
+        topic_scores.set_index('index', inplace=True)
 
 
+    ## Latent Dirichlet Allocation Topic Models #################################
     if model == 'lda':
         ## Latent Dirichlet Allocation ####
         print('Running LDA with ', str(num_topics) + ' topics')
